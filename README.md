@@ -12,7 +12,7 @@ This simple page is the requivalent of the web application which will integrate 
 - the document will be opened for signature directly in the "host" website with the Bulksign signing app running in a iframe.
 
 
-#How it looks from the user perspective
+# How it looks from the user perspective
 
 <img src="https://i.imgur.com/4Ttcnlc.gif" alt="Bulksign Integration" style="width: 900px; height:550px"/>
 
