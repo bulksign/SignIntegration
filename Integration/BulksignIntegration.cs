@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using Bulksign.Api;
-using Microsoft.AspNetCore.Hosting.Internal;
 
 namespace WebsiteIntegration.Integration
 {
@@ -15,37 +14,40 @@ namespace WebsiteIntegration.Integration
 		{
 			BulkSignApi api = new BulkSignApi();
 
-			BulksignBundle bundle = new BulksignBundle();
+			BundleApiModel bundle = new BundleApiModel();
 			bundle.Name = "Website Integration Sample";
 			bundle.DisableNotifications = true; //no email notifications
 			
 
-			BulksignRecipient recipient = new BulksignRecipient();
+			RecipientApiModel recipient = new RecipientApiModel();
 			recipient.Index = 1;
 			recipient.Email = email;
 			recipient.Name = name;
-			recipient.RecipientType = BulksignApiRecipientType.Signer;
+			recipient.RecipientType = RecipientTypeApi.Signer;
 
-			bundle.Recipients = new BulksignRecipient[1] { recipient };
+			bundle.Recipients = new RecipientApiModel[1] { recipient };
 
 
-			BulksignDocument document = new BulksignDocument();
+			DocumentApiModel document = new DocumentApiModel();
 			document.FileName = "test.pdf";
-			document.ContentBytes = File.ReadAllBytes(filePath);
+			document.FileContentByteArray = new FileContentByteArray()
+			{
+				ContentBytes = File.ReadAllBytes(filePath)
+			};
 
-			bundle.Documents = new BulksignDocument[1] { document };
+			bundle.Documents = new DocumentApiModel[1] { document };
 
 
-			BulksignAuthorization auth = new BulksignAuthorization();
+			AuthorizationApiModel auth = new AuthorizationApiModel();
 			auth.UserEmail = BulksignAccountEmail;
 			auth.UserToken = BulksignAccountToken;
 
 
-			BulksignResult<BulksignSendBundleResult> result = api.SendBundle(auth, bundle);
+			BulksignResult<SendBundleResultApiModel> result = api.SendBundle(auth, bundle);
 
 			if (result.IsSuccessful)
 			{
-				return api.GetOpenBundleForSigningUrl(result.Response.AccessCodes[0].AccessCode);
+				return api.GetSignUrlForAccessCode(result.Response.AccessCodes[0].AccessCode);
 			}
 
 			throw new InvalidOperationException(result.ErrorMessage);
