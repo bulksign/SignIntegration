@@ -1,6 +1,6 @@
-# Bulksign website integration
+# Signing integration
 
-This demo sample code shows how simple is to integrate digital signatures directly into your own website using the Bulksign platform.
+This demo sample code shows how simple is to integrate digital signatures directly into your own website or application using the Bulksign platform.
 
 # Technical details 
 
