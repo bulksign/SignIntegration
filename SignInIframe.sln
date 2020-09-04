@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebsiteIntegration", "WebsiteIntegration.csproj", "{78AF11DD-6FD9-4B94-BC27-1F0FD00843A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignInIframe", "SignInIframe.csproj", "{78AF11DD-6FD9-4B94-BC27-1F0FD00843A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
